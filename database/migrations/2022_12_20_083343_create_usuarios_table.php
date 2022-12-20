@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('apellidos', 50);
             //f_nacimiento date
             $table->date('f_nacimiento');
-            //deleted_at timestamp
-            $table->timestamp('deleted_at')->nullable();
+            //soft delete
+            $table->softDeletes();
         });
     }
 

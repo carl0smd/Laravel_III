@@ -11,7 +11,6 @@
         <table id="tabla" class="table table-striped table-bordered">
            <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fecha de nacimiento</th>
@@ -22,7 +21,6 @@
             <tbody>
                 @foreach($usuarios as $usuario)
                 <tr data-id='{{$usuario->id}}'>
-                    <td>{{$usuario->id}}</td>
                     <td>{{$usuario->nombre}}</td>
                     <td>{{$usuario->apellidos}}</td>
                     <td>{{$usuario->f_nacimiento}}</td>
@@ -36,7 +34,27 @@
 
     <script>
     $(document).ready(function(){
-
+        $('#tabla').DataTable({
+            columnDefs: [
+            { orderable: true, className: 'reorder', targets: 0 },
+            { orderable: false, targets: '_all' }
+            ],
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por pagina",
+                "zeroRecords": "No se encontraron resultados en su busqueda",
+                "searchPlaceholder": "Buscar registros",
+                "info": "Mostrando registros de _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+            }
+        });
 
         $("#tabla").on("click",".btn_borrar",function(e){
             e.preventDefault();
