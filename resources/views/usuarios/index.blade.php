@@ -3,19 +3,15 @@
 @section('contenido')
 <h1 style="text-align:center">Listado de usuarios</h1>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <a href="" class="btn btn-success mb-3">Crear usuario</a>
-            </div>
-        </div>
+
         <table id="tabla" class="table table-striped table-bordered">
            <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fecha de nacimiento</th>
+                    <th>Publicaciones</th>
                     <th>Borrar</th>
-                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,8 +20,8 @@
                     <td>{{$usuario->nombre}}</td>
                     <td>{{$usuario->apellidos}}</td>
                     <td>{{$usuario->f_nacimiento}}</td>
+                    <td>{{DB::table('publicaciones')->where('usuario_id', $usuario->id)->count();}}</td>
                     <td><button class="btn btn-danger btn_borrar">Borrar</button></td>
-                    <td><a href="" class="btn btn-warning btn_editar">Editar</a></td>
                 </tr>
                 @endforeach
             </tbody>
