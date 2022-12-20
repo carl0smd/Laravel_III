@@ -15,7 +15,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::all();
+        return view('usuarios.index', compact('usuarios'));
     }
 
     /**
@@ -79,8 +80,8 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        Usuario::find($id)->delete($id);
     }
 }

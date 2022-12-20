@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublicacionesController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('usuarios', UsuarioController::class);
+Route::resource('publicaciones', PublicacionesController::class);
+
+
+//get usuarios.index as main page
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('usuarios.index');
 });
+
