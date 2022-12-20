@@ -84,4 +84,14 @@ class UsuarioController extends Controller
     {
         Usuario::find($id)->delete($id);
     }
+
+    public function recuperar()
+    {
+        Usuario::onlyTrashed()->restore();
+    }
+
+    public function eliminar()
+    {
+        Usuario::onlyTrashed()->forceDelete();
+    }
 }

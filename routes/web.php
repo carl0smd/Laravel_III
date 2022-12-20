@@ -15,12 +15,18 @@ use App\Http\Controllers\UsuarioController;
 |
 */
 
-Route::resource('usuarios', UsuarioController::class);
-Route::resource('publicaciones', PublicacionesController::class);
-
-
-//get usuarios.index as main page
 Route::get('/', function () {
     return redirect()->route('usuarios.index');
 });
+
+Route::resource('usuarios', UsuarioController::class);
+Route::resource('publicaciones', PublicacionesController::class);
+
+// //restaurar
+// Route::get('', [UsuarioController::class, 'restaurar'])->name('usuarios.restaurar');
+// //eliminar definitivamente
+// Route::delete('', [UsuarioController::class, 'eliminar'])->name('usuarios.eliminar');
+
+
+
 

@@ -3,12 +3,19 @@
 @section('contenido')
 <h1 style="text-align:center">Listado de usuarios</h1>
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-success btn-restaurar">Restaurar</button>
+                <button class="btn btn-danger btn-eliminar">Eliminar definitivamente</button>
+            </div>
 
+        </div>
         <table id="tabla" class="table table-striped table-bordered">
            <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellidos</th>
+                    <th>Edad</th>
                     <th>Fecha de nacimiento</th>
                     <th>Publicaciones</th>
                     <th>Borrar</th>
@@ -19,8 +26,9 @@
                 <tr data-id='{{$usuario->id}}'>
                     <td>{{$usuario->nombre}}</td>
                     <td>{{$usuario->apellidos}}</td>
+                    <td>{{$usuario->edad}}</td>
                     <td>{{$usuario->f_nacimiento}}</td>
-                    <td>{{DB::table('publicaciones')->where('usuario_id', $usuario->id)->count();}}</td>
+                    <td><button id="publicaciones">{{DB::table('publicaciones')->where('usuario_id', $usuario->id)->count();}}</button></td>
                     <td><button class="btn btn-danger btn_borrar">Borrar</button></td>
                 </tr>
                 @endforeach
@@ -30,6 +38,8 @@
 
     <script>
     $(document).ready(function(){
+
+
         $('#tabla').DataTable({
             columnDefs: [
             { orderable: true, className: 'reorder', targets: 0 },
